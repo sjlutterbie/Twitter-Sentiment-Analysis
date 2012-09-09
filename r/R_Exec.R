@@ -5,7 +5,7 @@
 ############################
 
 #Collects results from a Twitter search (via API) COMPLETE
-#Cleans results
+#Cleans results 
 #Conducts sentiment analysis
 #Visualizes results
 
@@ -19,6 +19,7 @@
   library(twitteR)
   library(XML)
   library(RCurl)
+  library(sentiment)
   
 #Get search data
   search.results <- searchTwitter(search.string, n = search.max.results, lang="en")
@@ -31,3 +32,11 @@
 
 #Extract text for all statuses
   status.texts <- lapply(search.results, getTweetText)
+    rm(search.results)
+  
+  cleaned.texts <- c()
+  for(i in seq_len(length(status.texts))){
+    cleaned.texts <- append(cleaned.texts, as.character(status.texts[[i]]))
+  }
+    rm(status.texts)
+
