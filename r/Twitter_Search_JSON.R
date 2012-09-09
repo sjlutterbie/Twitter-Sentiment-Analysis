@@ -28,3 +28,4 @@ search.language <- "en"
     tweets.text <- append(tweets.text, results.R$results[[i]]$text)
   }
   
+#Clean up tweets to extract natural language
