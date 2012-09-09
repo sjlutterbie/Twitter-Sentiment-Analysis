@@ -28,6 +28,6 @@
     #Paste together components
       search.string <- paste("http://search.twitter.com/search.atom?q=", search.string, "&rpp=100&lang=", search.language, sep="")
   #Run search, store results
-      results.XML <- xmlTreeParse(search.string, encoding="UTF-8", isURL = TRUE)
+      results.XML <- xmlParseDoc(search.string, encoding="UTF-8", asText = FALSE)
   #Extract key data
       results.XML.text <- getNodeSet(results.XML, "/feed")
