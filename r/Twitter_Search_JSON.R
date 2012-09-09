@@ -6,7 +6,8 @@ search.string <- "iPhone"
 search.language <- "en"
 
 #Load libraries
-  library(rjson)
+#  library(rjson)
+  library(RJSONIO)
   library(RCurl)
   library(sentiment)
 
@@ -39,4 +40,15 @@ search.language <- "en"
     #Special characters
       #TO BE SOLVED
 
+#Sentiment analysis
+  tweets.sentiment <- classify_emotion(tweets.text)
+
+#Print results with positive matchings
+  for(i in seq_len(length(tweets.sentiment[,7]))){
+    if(!is.na(tweets.sentiment[i,7])){
+      message(tweets.sentiment[i,7])
+      message(tweets.text[i])
+    }
+
+  }
 
