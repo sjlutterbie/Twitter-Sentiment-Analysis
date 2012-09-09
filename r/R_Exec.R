@@ -14,29 +14,20 @@
 #User-defined variables
   search.string <- "iPhone"
   search.max.results <- "500"
+  search.language <- "en"
 
 #Load libraries
-  library(twitteR)
   library(XML)
   library(RCurl)
   library(sentiment)
   
-#Get search data
-  search.results <- searchTwitter(search.string, n = search.max.results, lang="en")
-  
-#Function for extracting text from status-class object
-  getTweetText <- function(status){
-    text <- status$text
-    return (text)
-  }
-
-#Extract text for all statuses
-  status.texts <- lapply(search.results, getTweetText)
-    rm(search.results)
-  
-  cleaned.texts <- c()
-  for(i in seq_len(length(status.texts))){
-    cleaned.texts <- append(cleaned.texts, as.character(status.texts[[i]]))
-  }
-    rm(status.texts)
-
+#Generate search results
+  #Create search URL
+    #Format search string in URL syntax
+      #For now, BEHAVE    
+    #Paste together components
+      search.string <- paste("http://search.twitter.com/search.atom?q=", search.string, "&rpp=100&lang=", search.language, sep="")
+  #Run search, store results
+      results.XML <- xmlTreeParse(search.string, encoding="UTF-8", isURL = TRUE)
+  #Extract key data
+      results.XML.text <- getNodeSet(results.XML, "/feed")
