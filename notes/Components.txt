@@ -1,0 +1,34 @@
+Webpage:
+  Search field (js validated)
+  Submit button (calls R script)
+  Area for GoogleVis display
+R:
+  Twitter search API for data gathering
+  Data munging
+  Sentiment analysis
+  GoogleVis API for visualization
+  Output = GoogleVis object
+
+================
+
+Phase 1:
+  Build local R functionality
+    Twitter Search API
+      Get a single search, use that data
+    Data Munging
+      Extract necessary information
+    Sentiment analysis
+      Use 'sentiment' R package
+
+Phase 2:
+  Extend local R functionality
+    Calculate moving average
+    GoogleVis
+    
+Phase 3:
+  OpenCPU package
+  
+Phase 4:
+  Webpage front-end
+  
+    
