@@ -29,3 +29,14 @@ search.language <- "en"
   }
   
 #Clean up tweets to extract natural language
+  #Remove the following...
+    #URLs
+     tweets.text <- gsub(
+       "http://t.co/[A-Za-z0-9]*", "", tweets.text)
+    #Usernames
+      tweets.text <- gsub(
+        "@[A-Za-z0-9[:punct:]]*", "", tweets.text)
+    #Special characters
+      #TO BE SOLVED
+
+
