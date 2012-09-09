@@ -19,7 +19,7 @@ search.language <- "en"
     sep="")
   
 #Get JSON results
-  results.json <- getURL(search.string)
+  results.json <- getURL(search.string, encoding="UTF-8")
   results.R <- fromJSON(results.json)
 
 #Extract text
